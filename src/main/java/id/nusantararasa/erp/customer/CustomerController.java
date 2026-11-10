@@ -15,9 +15,11 @@ import id.nusantararasa.erp.umum.DataTidakDitemukanException;
 public class CustomerController {
 
     private final CustomerRepository customerRepository;
+    private final PiutangService piutangService;
 
-    public CustomerController(CustomerRepository customerRepository) {
+    public CustomerController(CustomerRepository customerRepository, PiutangService piutangService) {
         this.customerRepository = customerRepository;
+        this.piutangService = piutangService;
     }
 
     @GetMapping
@@ -33,5 +35,10 @@ public class CustomerController {
         return customerRepository.findByKode(kode)
                 .map(CustomerDto::dari)
                 .orElseThrow(() -> new DataTidakDitemukanException("Customer " + kode + " tidak ditemukan."));
+    }
+
+    @GetMapping("/{kode}/piutang")
+    public PiutangDto piutang(@PathVariable String kode) {
+        return piutangService.piutang(kode);
     }
 }
