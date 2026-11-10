@@ -9,6 +9,8 @@ import org.springframework.data.repository.query.Param;
 
 public interface FakturRepository extends JpaRepository<Faktur, Long> {
 
+    List<Faktur> findByCustomerIdAndStatusOrderByJatuhTempoAscNomorAsc(Long customerId, StatusFaktur status);
+
     boolean existsBySalesOrderId(Long salesOrderId);
 
     List<Faktur> findAllByOrderByIdDesc();
