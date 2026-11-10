@@ -14,3 +14,6 @@ target/
 
 # Catatan: .env SENGAJA tidak diabaikan. Isinya dummy dan dipakai di latihan
 # izin agent (mini praktik) dan uji keamanan. Di project sungguhan, .env wajib masuk .gitignore.
+
+# SDKMAN (versi Java lokal per developer)
+.sdkmanrc
